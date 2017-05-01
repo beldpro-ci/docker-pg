@@ -14,9 +14,9 @@ services:
     ports:
       - '5432:5432'
     environment:
-      - "PG_DB_USER=authd"
-      - "PG_DB_PASSWORD=authd"
-      - "PG_DB_DATABASE=authddb1"
+      - "DB_USER=authd"
+      - "DB_PASSWORD=authd"
+      - "DB_DATABASE=authddb1"
       - "POSTGRES_PASSWORD=password"
     build: './db'
     networks:

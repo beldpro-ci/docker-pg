@@ -9,9 +9,9 @@ set -o errexit
 # that must be set. This can be consumed later via arrray
 # variable expansion ${REQUIRED_ENV_VARS[@]}.
 readonly REQUIRED_ENV_VARS=(
-  "PG_DB_USER"
-  "PG_DB_PASSWORD"
-  "PG_DB_DATABASE"
+  "DB_USER"
+  "DB_PASSWORD"
+  "DB_DATABASE"
   "POSTGRES_USER")
 
 # Main execution:
@@ -45,9 +45,9 @@ Aborting."
 # using the preconfigured POSTGRE_USER user.
 init_user_and_db() {
   psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
-     CREATE USER $PG_DB_USER WITH PASSWORD '$PG_DB_PASSWORD';
-     CREATE DATABASE $PG_DB_DATABASE;
-     GRANT ALL PRIVILEGES ON DATABASE $PG_DB_DATABASE TO $PG_DB_USER;
+     CREATE USER $DB_USER WITH PASSWORD '$DB_PASSWORD';
+     CREATE DATABASE $DB_DATABASE;
+     GRANT ALL PRIVILEGES ON DATABASE $DB_DATABASE TO $DB_USER;
 EOSQL
 }
 
